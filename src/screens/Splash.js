@@ -1,35 +1,40 @@
-import { useNavigation } from "@react-navigation/native"
-import { useEffect } from "react";
-import { StyleSheet, Text, View } from "react-native"
-
+import {View, Text, StyleSheet} from 'react-native';
+import React, {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 const Splash = () => {
-
-    const navigation = useNavigation();
-    useEffect(()=>{
-       setTimeout(()=>{
-        navigation.navigate('Signup');
-       },2000)
-    },[]);
-
-    return(
-        <View style={styles.container}>
-            <Text style={styles.logo}>{'Firebase\nChat App'}</Text>
-        </View>
-    )
-}
+  const navigation = useNavigation();
+  useEffect(() => {
+    setTimeout(() => {
+      checkLogin();
+    }, 2000);
+  }, []);
+  const checkLogin = async () => {
+    const id = await AsyncStorage.getItem('USERID');
+    if (id !== null) {
+      navigation.navigate('Main');
+    } else {
+      navigation.navigate('Login');
+    }
+  };
+  return (
+    <View style={styles.container}>
+      <Text style={styles.logo}>{'Firebase Chat\nApp'}</Text>
+    </View>
+  );
+};
 
 export default Splash;
-
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: 'lightgreen',
-        justifyContent: 'center',
-        alignItems: 'center',
-      },
-      logo: {
-        fontSize: 40,
-        color: 'white',
-        textAlign: 'center',
-      },
-})
+  container: {
+    flex: 1,
+    backgroundColor: 'white',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logo: {
+    fontSize: 40,
+    color: '#2f967b',
+    textAlign: 'center',
+  },
+});

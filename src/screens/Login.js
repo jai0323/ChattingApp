@@ -3,19 +3,24 @@ import {
     Text,
     StyleSheet,
     TextInput,
-    TouchableOpacity,
+    Pressable,
     Alert,
   } from 'react-native';
-  import React, {useState} from 'react';
-  import {useNavigation} from '@react-navigation/native';
+
+  import React, { useState } from 'react';
+  import { useNavigation } from '@react-navigation/native';
   import firestore from '@react-native-firebase/firestore';
-  import Loader from '../components/Loader';
+
   import AsyncStorage from '@react-native-async-storage/async-storage';
+import Loader from '../components/Loader';
+
+
   const Login = () => {
+
     const [email, setEmail] = useState('');
-  
     const [password, setPassword] = useState('');
     const [visible, setVisible] = useState(false);
+
     const navigation = useNavigation();
   
     const loginUser = () => {
@@ -26,7 +31,7 @@ import {
         .get()
         .then(res => {
           setVisible(false);
-          if (res.docs !== []) {
+          if (res.docs.length) {
             console.log(JSON.stringify(res.docs[0].data()));
             goToNext(
               res.docs[0].data().name,
@@ -67,13 +72,13 @@ import {
           onChangeText={txt => setPassword(txt)}
         />
   
-        <TouchableOpacity
+        <Pressable
           style={styles.btn}
           onPress={() => {
             loginUser();
           }}>
           <Text style={styles.btnText}>Login</Text>
-        </TouchableOpacity>
+        </Pressable>
         <Text
           style={styles.orLogin}
           onPress={() => {
@@ -116,7 +121,7 @@ import {
       justifyContent: 'center',
       alignItems: 'center',
       marginTop: 50,
-      backgroundColor: 'purple',
+      backgroundColor: '#2f967b',
     },
     btnText: {
       color: 'white',

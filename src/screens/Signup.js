@@ -3,7 +3,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  TouchableOpacity,
+  Pressable,
   Alert,
 } from 'react-native';
 import React, {useState} from 'react';
@@ -94,7 +94,7 @@ const Signup = () => {
         value={confirmPassword}
         onChangeText={txt => setConfirmPassword(txt)}
       />
-      <TouchableOpacity
+      <Pressable
         style={styles.btn}
         onPress={() => {
           if (validate()) {
@@ -104,11 +104,11 @@ const Signup = () => {
           }
         }}>
         <Text style={styles.btnText}>Sign up</Text>
-      </TouchableOpacity>
+      </Pressable>
       <Text
         style={styles.orLogin}
         onPress={() => {
-          navigation.goBack();
+          navigation.navigate('Login');
         }}>
         Or Login
       </Text>
@@ -146,7 +146,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 50,
-    backgroundColor: 'purple',
+    backgroundColor: '#2f967b',
   },
   btnText: {
     color: 'white',
