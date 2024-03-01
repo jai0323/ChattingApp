@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "236840760594",
+    "project_id": "rnfirebasechatapp-d9fd6",
+    "storage_bucket": "rnfirebasechatapp-d9fd6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:236840760594:android:494a3c8e11ae28e914afcb",
+        "android_client_info": {
+          "package_name": "com.myfirstapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCUgytIzNAFQXvE7-bkc6ou7TVLB1SERpA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
